@@ -1,0 +1,58 @@
+<div class="card meetings cf">
+    <div class="textintro">
+        <h1>Add Targets</h1>
+        <p>Type a Targets and hit +</p>
+        <form class="formgroup addmeeting cf"
+              name="myform"
+              ng-submit="addTarget()"
+              novalidate>
+            <div class="inputwrapper">
+                <input type="text" name="targetname"
+                       placeholder="Taget name"
+                       ng-model="targetname" ng-required="true">
+
+                <input type="text" name="description" placeholder="Taget description"
+                       ng-model="description" ng-required="true" maxlength="500">
+
+            </div>
+            <div class="inputwrapper">
+                Active :<input type="checkbox" name="targetstatus" placeholder="Taget Status"
+                               ng-model="targetstatus" ng-trim="boolean">
+            </div>
+            <div class="tooltip">
+                <button type="submit" class="btn btn-right"
+                        ng-disabled="myform.$invalid">
+                    +
+                </button>
+            </div>
+            <div class="tooltip">
+            </div>
+        </form>
+    </div><!-- meetings cf -->
+    <div class="card meetings cf">
+        <h2>Your Targets</h2>
+        <div class="meeting" ng-repeat="(key, target) in targets">
+            <button class="btn btn-delete tooltip"
+                    ng-click="deleteTarget(key)">
+                <span>Delete this target</span>
+            </button>
+            <a class="btn btn-checkin tooltip"
+               ng-href="#/checkins/{{currentUser.regUser}}/{{target.$id}}">
+                <span>Go to check-in URL</span>
+            </a>
+            <a class="btn btn-list tooltip"
+               ng-href="#/checkins/{{currentUser.regUser}}/{{target.$id}}/checkinsList">
+                <span>View list of checked-in users</span>
+            </a>
+            <a class="btn btn-reset tooltip"
+               ng-href="#/targets/{{target.$id}}/tragetUpdate">
+                <span>Edit this target company</span>
+            </a>
+            <br />
+            <span class="text">{{target.name}}</span>
+            <br />
+            <span class="text">{{target.status}}</span>
+            <br />
+            <span class="text">{{target.description}}</span>
+        </div><!-- meetings list -->
+    </div><!-- meetings cf -->

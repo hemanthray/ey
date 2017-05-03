@@ -1,0 +1,33 @@
+<div class="card meetings cf">
+    <form name="myform"
+          ng-submit="updateTarget()"
+          novalidate>
+
+        <ul class="userlist cf">
+            <li ng-class="checkin.userState" ng-repeat="target in targets ">
+                <div class="checkin">
+
+                    <div class="info">
+                        <input type="text" name="targetname"
+                               placeholder="Taget name"
+                               ng-model="targetname" ng-required="true" value="{{target.name}} ">
+
+                        <input type="text" name="description" placeholder="Taget description"
+                               ng-model="description" ng-required="true" maxlength="500" value="{{checkin.description}}">
+                      
+                        <input type="text" name="description" placeholder="Taget description"
+                               ng-model="targetstatus" ng-required="true" maxlength="500" value="{{checkin.status}}">
+
+                        
+                    </div><!-- info -->
+
+                </div>
+            </li>
+        </ul>
+
+        <button class="btn" type="submit"
+                ng-disabled="myform.$invalid">
+          Update
+        </button>
+      </form>
+</div>
